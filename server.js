@@ -1,8 +1,11 @@
 const express = require('express');
+var cors = require('cors');
+
 const tronRoutes = require('./routes/tron');
 
 const app = express();
 const port = process.env.PORT || 3000;
+app.use(cors());
 
 app.use(express.json());
 app.use('/api/tron', tronRoutes);
