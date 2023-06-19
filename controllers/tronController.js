@@ -1,8 +1,8 @@
 const TronWeb = require('tronweb');
 
-const fullNode = 'https://api.shasta.trongrid.io';
-const solidityNode = 'https://api.shasta.trongrid.io';
-const eventServer = 'https://api.shasta.trongrid.io';
+const fullNode = 'https://api.trongrid.io';
+const solidityNode = 'https://api.trongrid.io';
+const eventServer = 'https://api.trongrid.io';
 const privateKey = "3E3B02DDD762F9C9BC25E7E38B924A1FB2EDF5BF1AD6F20DD5AED6A4DD0B52A0";
 
 const tronWeb = new TronWeb(fullNode, solidityNode, eventServer, privateKey);
@@ -30,7 +30,7 @@ exports.getBalance = async (req, res) => {
 exports.getTokenBalance = async (req, res) => {
     try {
         const userAddress = req.params.address;
-        const contractAddress = 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t'; // Replace with actual USDT contract address
+        const contractAddress = 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t';
         const contract = await tronWeb.contract().at(contractAddress);
         const balance = await contract.balanceOf(userAddress).call();
         res.status(200).json({ status: 'success', data: balance.toString() });
